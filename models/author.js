@@ -11,7 +11,7 @@ const AuthorSchema = new Schema({
 
 // Virtual for author's full name
 AuthorSchema.virtual("name").get(() => {
-  return this.family_name + ", " + this.first_name;
+  return `${this.family_name}, ${this.first_name}`;
 });
 
 // Virtual for author's lifespan
@@ -23,7 +23,7 @@ AuthorSchema.virtual("lifespan").get(() => {
 
 // Virtual for author's URL
 AuthorSchema.virtual("url").get(() => {
-  return "/catalog/author/" + this._id;
+  return `/catalog/author/${this._id}`;
 });
 
 //Export model
