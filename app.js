@@ -13,7 +13,12 @@ const app = express();
 const mangoDbUrl = require('./config');
 const mongoose = require('mongoose');
 const mongoDB = mangoDbUrl;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
